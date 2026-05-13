@@ -13,4 +13,3 @@ yarn-error.log*
 
 # Deployment artifacts
 app.zip
-deployment/screenshots/.gitkeep
