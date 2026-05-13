@@ -1,0 +1,15 @@
+PLACEHOLDER FOR architecture.png
+==================================
+
+Replace this file with the actual exported draw.io / diagrams.net architecture diagram.
+
+Required diagram contents (per diagram/README.md):
+- All Azure resources: Resource Group, App Service Plan + Web App (2 instances), Azure SQL Server + Database, Storage Account + Blob container.
+- Managed Identity badge on the Web App.
+- Autoscale rule callout on the App Service Plan (CPU > 70% scale out, CPU < 30% scale in, min 2 max 4).
+- GitHub Actions CI/CD arrow into the Web App labeled "OIDC + zip deploy".
+- Security boundary as a dashed rectangle around private resources (SQL, internal storage paths).
+- Public vs. private side clearly separated.
+- Protocol labels on every arrow (HTTPS, TDS 1433, blob HTTPS).
+
+Export at >= 1600 px wide as PNG. Save as `diagram/architecture.png` and delete this placeholder file in a follow-up commit.

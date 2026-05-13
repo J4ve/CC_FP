@@ -22,6 +22,7 @@ This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 - `CARL GERALD J. PARRO` - Added `src/public/styles.css` on 2026-05-14: dark theme stylesheet (responsive product grid, sticky nav, cart table, mobile breakpoints) served as static asset by Express.
 - `CARL GERALD J. PARRO` - Added `src/README.md` on 2026-05-14: local development guide, environment variable reference table, route documentation, file inventory.
 - `JAVE A. BACSAIN` - Added `deployment/README.md` on 2026-05-14: full deployment guide covering resource map, optimization summary, Azure CLI install instructions, password handling, app code packaging, post-deploy verification (catalog, /health, /cart, /orders), Portal screenshot checklist, and a troubleshooting matrix.
+- `JAVE A. BACSAIN` - Added `diagram/architecture.placeholder.txt` on 2026-05-14 documenting required diagram contents (all Azure resources, Managed Identity badge, autoscale callout, CI/CD arrow, security boundary, protocol labels). Final exported PNG to replace it before submission.
 <!-- INSERT_ADDED -->
 
 ### Changed
