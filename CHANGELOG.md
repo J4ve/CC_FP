@@ -27,6 +27,7 @@ This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 <!-- INSERT_ADDED -->
 
 ### Changed
+- `MARC JUSTIN N. PRESTADO` - Updated root `README.md` on 2026-05-14: replaced Step 02 skeleton with full version including architecture summary table, complete repository layout tree, run-locally and deploy-to-Azure quick commands, cleanup instructions, and a reference to the `commit-steps/` progression for grading evidence.
 <!-- INSERT_CHANGED -->
 
 ### Fixed
