@@ -1,0 +1,18 @@
+{
+  "name": "genericmart-cloud",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "node --watch server.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "mssql": "^11.0.1",
+    "@azure/storage-blob": "^12.24.0"
+  }
+}
