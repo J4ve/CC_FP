@@ -20,6 +20,7 @@ This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 - `CARL GERALD J. PARRO` - Added `src/public/styles.css` on 2026-05-14: dark theme stylesheet (responsive product grid, sticky nav, cart table, mobile breakpoints) served as static asset by Express.
 - `CARL GERALD J. PARRO` - Added `src/README.md` on 2026-05-14: local development guide, environment variable reference table, route documentation, file inventory.
 - `CARL GERALD J. PARRO` - Added `src/public/styles.css` on 2026-05-14: dark theme stylesheet (responsive product grid, sticky nav, cart table, mobile breakpoints) served as static asset by Express.
+- `CARL GERALD J. PARRO` - Added `src/README.md` on 2026-05-14: local development guide, environment variable reference table, route documentation, file inventory.
 <!-- INSERT_ADDED -->
 
 ### Changed
