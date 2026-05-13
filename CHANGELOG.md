@@ -23,6 +23,7 @@ This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 - `CARL GERALD J. PARRO` - Added `src/README.md` on 2026-05-14: local development guide, environment variable reference table, route documentation, file inventory.
 - `JAVE A. BACSAIN` - Added `deployment/README.md` on 2026-05-14: full deployment guide covering resource map, optimization summary, Azure CLI install instructions, password handling, app code packaging, post-deploy verification (catalog, /health, /cart, /orders), Portal screenshot checklist, and a troubleshooting matrix.
 - `JAVE A. BACSAIN` - Added `diagram/architecture.placeholder.txt` on 2026-05-14 documenting required diagram contents (all Azure resources, Managed Identity badge, autoscale callout, CI/CD arrow, security boundary, protocol labels). Final exported PNG to replace it before submission.
+- `MARC JUSTIN N. PRESTADO` - Added `.github/workflows/azure-deploy.yml` on 2026-05-14: CI/CD pipeline triggered by push to `main` paths `src/**`. Installs prod deps with `npm ci --omit=dev`, packages app into zip, logs in to Azure via OIDC (no client secret), deploys to App Service, smoke-tests `/health`. Implements cloud Optimization #2 (Security & DevOps - CI/CD Automation).
 <!-- INSERT_ADDED -->
 
 ### Changed
