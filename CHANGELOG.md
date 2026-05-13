@@ -18,6 +18,7 @@ This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 - `MARC JUSTIN N. PRESTADO` - Added `report/report.md` on 2026-05-14: full architecture writeup covering baseline services (App Service S1 2x, SQL S0, Storage_LRS, Managed Identity), the two cloud optimizations (autoscale, GitHub Actions CI/CD), the security boundary, and intentional trade-offs (no Redis, no WAF, single region).
 - `MARC JUSTIN N. PRESTADO` - Added `diagram/README.md` on 2026-05-14: drafting checklist for `architecture.png` covering Azure shape library usage, every required resource label, security boundary rectangle, autoscale and CI/CD optimization callouts, and PNG export requirements (>= 1600 px wide).
 - `CARL GERALD J. PARRO` - Added `src/public/styles.css` on 2026-05-14: dark theme stylesheet (responsive product grid, sticky nav, cart table, mobile breakpoints) served as static asset by Express.
+- `CARL GERALD J. PARRO` - Added `src/README.md` on 2026-05-14: local development guide, environment variable reference table, route documentation, file inventory.
 <!-- INSERT_ADDED -->
 
 ### Changed
