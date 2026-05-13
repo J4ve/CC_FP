@@ -14,6 +14,7 @@ This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 - `CARL GERALD J. PARRO` - Added `src/package.json` on 2026-05-14: declared `express`, `mssql`, and `@azure/storage-blob` dependencies, set Node 20+ engine, defined `dev` (watch mode) and `start` scripts.
 - `CARL GERALD J. PARRO` - Added `src/server.js` on 2026-05-14: Express application with product catalog, cookie-backed cart, checkout (transactional SQL writes with row-level UPDLOCK), `/orders` history view, `/health` probe (returns SQL status + App Service instance id), in-memory fallback for local development.
 - `JAVE A. BACSAIN` - Added `deployment/deploy.azcli` on 2026-05-14: Azure CLI IaC script provisioning Resource Group, Storage Account + Blob container, Azure SQL Server + Database, App Service Plan (Standard S1, 2 instances) + Web App with Managed Identity, autoscale profile (CPU 70/30, min 2 max 4). SQL password sourced from `SQL_ADMIN_PASSWORD` env var, never hardcoded.
+- `JAVE A. BACSAIN` - Added `deployment/deploy.ps1` on 2026-05-14: PowerShell mirror of `deploy.azcli` for native Windows hosts. Reads `$env:SQL_ADMIN_PASSWORD`, truncates storage account name to the 24-character limit, and exposes the same Web App / SQL / Storage URLs at the end of the run.
 <!-- INSERT_ADDED -->
 
 ### Changed
