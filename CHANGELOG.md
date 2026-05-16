@@ -7,6 +7,7 @@ This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 ## [Unreleased]
 
 ### Added
+- `CARL GERALD J. PARRO` - Added 4 extra app-demo PNGs to `deployment/screenshots/` on 2026-05-16: 09-app-catalog, 10-app-cart, 11-app-checkout, 12-app-search. Documents the actual customer-facing flows (browse, add to cart, checkout, search) for richer Deliverable 4 video demo evidence. Captioned all 4 in `deployment/screenshots/README.md`.
 - `CARL GERALD J. PARRO` - Added `diagram/architecture.png` on 2026-05-16: final exported architecture diagram (draw.io, >=1600 px wide) showing all Azure resources, connections with protocols, security boundary, Application Insights (Optimization #1), and GitHub Actions CI/CD (Optimization #2).
 - `MARC JUSTIN N. PRESTADO` - Added `src/public/css/*.css` and `src/public/js/*.js` on 2026-05-16: ported TeknikkTorget UI assets (3 stylesheets - custom theme, a11y overrides, retro mode; 10 client scripts - main store, i18n, cart, catalog, home, product, a11y, retro, ui-components, validation). Rebranded all references from TeknikkTorget to GenericMart. Updated price formatter to use ₱ (Philippine peso) prefix instead of kr.
 - `CARL GERALD J. PARRO` - Added `src/public/*.html` on 2026-05-16: 5 TeknikkTorget-derived storefront pages (homepage, catalog, cart, checkout, product detail) rebranded as GenericMart with Philippine peso pricing. Marquee tagline, copyright, and shipping thresholds updated. arngren.net references removed.
