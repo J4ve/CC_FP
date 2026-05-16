@@ -13,7 +13,7 @@ Deploy a simple e-commerce web application on Microsoft Azure that demonstrates 
 **GenericMart** is a fictional storefront written in Node.js using the Express framework. It exposes:
 
 - `/` product catalog
-- `/cart` view and modify cart (cookie-backed)
+- `/cart` view and modify cart (client-side, localStorage)
 - `/checkout` persists demo order to Azure SQL
 - `/orders` last 20 orders
 - `/health` JSON probe (used by Azure load balancer and the CI smoke test)
@@ -26,7 +26,7 @@ Product data and order data are stored in Azure SQL Database. Product images are
 Browser
    |
    v
-Azure App Service (Linux, Node 20, S1, 2 instances)
+Azure App Service (Linux, Node 22, S1, 2 instances)
    |  (Managed Identity)
    |--> Azure SQL Database (S0)     [products, orders]
    |--> Azure Blob Storage (LRS)    [product images]
@@ -34,7 +34,7 @@ Azure App Service (Linux, Node 20, S1, 2 instances)
 
 | Layer | Service | Configuration |
 |---|---|---|
-| Compute | App Service Plan + Web App | Standard S1, Linux, Node 20, 2 instances |
+| Compute | App Service Plan + Web App | Standard S1, Linux, Node 22, 2 instances |
 | Data | Azure SQL Database | DTU S0, single database |
 | Storage | Azure Storage Account | StorageV2, Standard_LRS, public blob container `products` |
 | Security control | Managed Identity on Web App | App Service authenticates to Azure resources without storing secrets |
