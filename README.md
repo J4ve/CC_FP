@@ -15,7 +15,7 @@
 ## Live demo
 
 - Application URL: <https://app-genericmart-1327081543903332108.azurewebsites.net>
-- Video presentation (unlisted YouTube): `https://youtu.be/<your-video>` (fill in after recording)
+- Video presentation (unlisted YouTube): <https://youtu.be/Jy4XTUlMmUI>
 
 ## What is this?
 
