@@ -1,4 +1,4 @@
-# GenericMart Cloud
+﻿# GenericMart Cloud
 
 > A Generic E-Commerce Website (Totally Original Branding, Definitely Not A Clone Of Anything).
 
@@ -14,7 +14,7 @@
 
 ## Live demo
 
-- Application URL: `https://<webapp>.azurewebsites.net` (fill in after deployment)
+- Application URL: `https://app-genericmart-1327081543903332108.azurewebsites.net` (fill in after deployment)
 - Video presentation (unlisted YouTube): `https://youtu.be/<your-video>` (fill in after recording)
 
 ## What is this?
@@ -38,29 +38,29 @@ See `diagram/architecture.png` for the visual, `report/report.md` for the full d
 
 ```
 GenericMart-Cloud/
-├── diagram/
-│   ├── architecture.png           Final architecture diagram (PNG)
-│   └── README.md                  Drafting checklist
-├── deployment/
-│   ├── deploy.azcli               Bash Azure CLI script
-│   ├── deploy.ps1                 PowerShell mirror script
-│   ├── screenshots/               Portal evidence screenshots
-│   └── README.md                  Step-by-step deployment guide
-├── report/
-│   ├── cost-estimate.md           Cost report + Pricing Calculator screenshot
-│   └── report.md                  Architecture + optimization writeup
-├── src/
-│   ├── server.js                  Express application
-│   ├── package.json               Dependencies
-│   ├── public/
-│   │   └── styles.css             Stylesheet
-│   └── README.md                  Local dev guide
-├── .github/
-│   └── workflows/
-│       └── azure-deploy.yml       CI/CD pipeline (Optimization 2)
-├── CHANGELOG.md                   Dated entries per member
-├── INSTRUCTIONS.md                Copy of the original assignment brief
-└── README.md                      This file
+â”œâ”€â”€ diagram/
+â”‚   â”œâ”€â”€ architecture.png           Final architecture diagram (PNG)
+â”‚   â””â”€â”€ README.md                  Drafting checklist
+â”œâ”€â”€ deployment/
+â”‚   â”œâ”€â”€ deploy.azcli               Bash Azure CLI script
+â”‚   â”œâ”€â”€ deploy.ps1                 PowerShell mirror script
+â”‚   â”œâ”€â”€ screenshots/               Portal evidence screenshots
+â”‚   â””â”€â”€ README.md                  Step-by-step deployment guide
+â”œâ”€â”€ report/
+â”‚   â”œâ”€â”€ cost-estimate.md           Cost report + Pricing Calculator screenshot
+â”‚   â””â”€â”€ report.md                  Architecture + optimization writeup
+â”œâ”€â”€ src/
+â”‚   â”œâ”€â”€ server.js                  Express application
+â”‚   â”œâ”€â”€ package.json               Dependencies
+â”‚   â”œâ”€â”€ public/
+â”‚   â”‚   â””â”€â”€ styles.css             Stylesheet
+â”‚   â””â”€â”€ README.md                  Local dev guide
+â”œâ”€â”€ .github/
+â”‚   â””â”€â”€ workflows/
+â”‚       â””â”€â”€ azure-deploy.yml       CI/CD pipeline (Optimization 2)
+â”œâ”€â”€ CHANGELOG.md                   Dated entries per member
+â”œâ”€â”€ INSTRUCTIONS.md                Copy of the original assignment brief
+â””â”€â”€ README.md                      This file
 ```
 
 ## Run locally
@@ -149,3 +149,4 @@ Quick map of how this repository satisfies the CSEC 3 Final Project rubric for g
 | **D3: Pricing Calculator screenshot** | `report/screenshots/pricing-calculator.png` |
 | **D4: Live demo URL** | (see "Live demo" section above) |
 | **D4: YouTube video link** | (see "Live demo" section above) |
+
