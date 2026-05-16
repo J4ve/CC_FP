@@ -34,6 +34,7 @@ GenericMart is a Node.js (Express) e-commerce storefront deployed on Azure. Cust
 | App Service Plan (Linux) | Standard S1, 1 core, 1.75 GB RAM | 2 instances (730 hr each) | $73.00 x 2 = $146.00 |
 | Azure SQL Database | DTU model, S0 (10 DTU), 250 GB cap | 1 database | $15.00 |
 | Azure Storage Account | Standard_LRS, hot tier, 5 GB stored + 10k transactions | 1 account | $0.30 |
+| Application Insights | Pay-as-you-go ingestion, first 5 GB/month free | 1 component + Log Analytics workspace | $0.00 (under free tier for our traffic) |
 | Bandwidth (egress) | First 100 GB free, then $0.087/GB | ~5 GB/month | $0.00 |
 | Azure Monitor / metrics | First 5 GB free | <1 GB | $0.00 |
 | **Total (baseline, monthly)** |  |  | **~$161.30 USD** |

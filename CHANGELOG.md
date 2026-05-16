@@ -9,10 +9,19 @@ This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 ### Added
 - `CARL GERALD J. PARRO` - Added `diagram/architecture.png` on 2026-05-16: final exported architecture diagram (draw.io, >=1600 px wide) showing all Azure resources, connections with protocols, security boundary, Application Insights (Optimization #1), and GitHub Actions CI/CD (Optimization #2).
 - `MARC JUSTIN N. PRESTADO` - Added `src/public/css/*.css` and `src/public/js/*.js` on 2026-05-16: ported TeknikkTorget UI assets (3 stylesheets - custom theme, a11y overrides, retro mode; 10 client scripts - main store, i18n, cart, catalog, home, product, a11y, retro, ui-components, validation). Rebranded all references from TeknikkTorget to GenericMart. Updated price formatter to use ₱ (Philippine peso) prefix instead of kr.
+- `CARL GERALD J. PARRO` - Added `src/public/*.html` on 2026-05-16: 5 TeknikkTorget-derived storefront pages (homepage, catalog, cart, checkout, product detail) rebranded as GenericMart with Philippine peso pricing. Marquee tagline, copyright, and shipping thresholds updated. arngren.net references removed.
 - placeholder for future changes
 
+### Changed
+- `JAVE A. BACSAIN` - Rewrote `src/server.js` on 2026-05-16: removed cookie-based cart (now client-side localStorage), added `POST /api/checkout` for SQL order persistence, added `GET /api/orders` JSON endpoint, kept `GET /health` probe. Added `src/public/data/products.js` with TeknikkTorget-derived product catalog (drones, scooters, electronics, robotics, tools, components) priced in Philippine peso, converted from kroner at 5.3x rate rounded to the nearest 50.
+- `MARC JUSTIN N. PRESTADO` - Updated `report/report.md` and `report/cost-estimate.md` on 2026-05-16: replaced Optimization #1 description from "App Service Plan autoscale" to "Application Insights telemetry" (Section 6 Monitoring & Operations category) to match the actually deployed stack. Autoscale was original plan but blocked by Azure CLI bug during deployment; swapped to App Insights which serves the same rubric requirement of "at least two cloud optimizations".
+
+### Fixed
+- `JAVE A. BACSAIN` - Committed `src/package-lock.json` on 2026-05-16 to unblock the GitHub Actions `setup-node` cache step. The lock file was previously generated locally but never committed, causing CI/CD runs after Steps 19-21 to fail at the cache-dependency-path resolution. Pinning the lock also gives reproducible npm installs across deploys.
+- `MARC JUSTIN N. PRESTADO` - Repaired CHANGELOG.md on 2026-05-16: added missing `### Changed`, `### Fixed`, `### Removed` subsections under `[Unreleased]`, moved BACSAIN's Step 19 server-rewrite entry from the v1.0 milestone heading back into `[Unreleased] > Changed` where it belongs, restored PARRO's Step 21 HTML pages entry (lost by an earlier apply.sh awk bug), and restored BACSAIN's ci-fix package-lock entry (lost because `### Fixed` subsection did not exist when ci-fix's apply.sh ran).
+
 ### Removed
-- `CARL GERALD J. PARRO` - Removed `diagram/architecture.placeholder.txt` on 2026-05-16: replaced by the real exported `architecture.png`.
+- placeholder for future changes
 
 ---
 
@@ -37,6 +46,5 @@ This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 - `JAVE A. BACSAIN` - Added `diagram/architecture.placeholder.txt` on 2026-05-14 documenting required diagram contents (all Azure resources, Managed Identity badge, autoscale callout, CI/CD arrow, security boundary, protocol labels). Final exported PNG to replace it before submission.
 
 ### Changed
-- `JAVE A. BACSAIN` - Rewrote `src/server.js` on 2026-05-16: removed cookie-based cart (now client-side localStorage), added `POST /api/checkout` for SQL order persistence, added `GET /api/orders` JSON endpoint, kept `GET /health` probe. Added `src/public/data/products.js` with TeknikkTorget-derived product catalog (drones, scooters, electronics, robotics, tools, components) priced in Philippine peso, converted from kroner at 5.3x rate rounded to the nearest 50.
 - `MARC JUSTIN N. PRESTADO` - Updated root `README.md` on 2026-05-14: replaced Step 02 skeleton with full version including architecture summary table, complete repository layout tree, run-locally and deploy-to-Azure quick commands, cleanup instructions, and a reference to the `commit-steps/` progression for grading evidence.
 - `CARL GERALD J. PARRO` - Closed out v1.0 milestone on 2026-05-14: promoted all Unreleased entries to the dated v1.0 heading, restored the empty `[Unreleased]` section for post-submission maintenance.
