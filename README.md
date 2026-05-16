@@ -1,4 +1,4 @@
-﻿# GenericMart Cloud
+# GenericMart Cloud
 
 > A Generic E-Commerce Website (Totally Original Branding, Definitely Not A Clone Of Anything).
 
@@ -19,13 +19,13 @@
 
 ## What is this?
 
-A simple Node.js Express storefront deployed on Microsoft Azure. Customers browse a small product catalog, add items to a cookie-based cart, and submit demo orders that persist to Azure SQL Database. Product images are served from Azure Blob Storage. The deployment is fully scripted via Azure CLI and re-deployed automatically by a GitHub Actions CI/CD pipeline on every push to `main`.
+A Node.js Express storefront deployed on Microsoft Azure. Customers browse a product catalog, add items to a client-side cart, and submit demo orders that persist to Azure SQL Database. Product images are served from Azure Blob Storage. The deployment is fully scripted via Azure CLI and re-deployed automatically by a GitHub Actions CI/CD pipeline on every push to `main`.
 
 ## Architecture at a glance
 
 | Layer | Service | SKU |
 |---|---|---|
-| Compute | Azure App Service Plan + Web App | Standard S1, Linux, Node 20, 2 instances |
+| Compute | Azure App Service Plan + Web App | Standard S1, Linux, Node 22, 2 instances |
 | Data | Azure SQL Database | DTU S0 |
 | Storage | Azure Storage Account | StorageV2, Standard_LRS, Blob container `products` |
 | Security control | Managed Identity on Web App | Secret-less auth to Azure resources |
@@ -37,30 +37,31 @@ See `diagram/architecture.png` for the visual, `report/report.md` for the full d
 ## Repository layout
 
 ```
-GenericMart-Cloud/
-â”œâ”€â”€ diagram/
-â”‚   â”œâ”€â”€ architecture.png           Final architecture diagram (PNG)
-â”‚   â””â”€â”€ README.md                  Drafting checklist
-â”œâ”€â”€ deployment/
-â”‚   â”œâ”€â”€ deploy.azcli               Bash Azure CLI script
-â”‚   â”œâ”€â”€ deploy.ps1                 PowerShell mirror script
-â”‚   â”œâ”€â”€ screenshots/               Portal evidence screenshots
-â”‚   â””â”€â”€ README.md                  Step-by-step deployment guide
-â”œâ”€â”€ report/
-â”‚   â”œâ”€â”€ cost-estimate.md           Cost report + Pricing Calculator screenshot
-â”‚   â””â”€â”€ report.md                  Architecture + optimization writeup
-â”œâ”€â”€ src/
-â”‚   â”œâ”€â”€ server.js                  Express application
-â”‚   â”œâ”€â”€ package.json               Dependencies
-â”‚   â”œâ”€â”€ public/
-â”‚   â”‚   â””â”€â”€ styles.css             Stylesheet
-â”‚   â””â”€â”€ README.md                  Local dev guide
-â”œâ”€â”€ .github/
-â”‚   â””â”€â”€ workflows/
-â”‚       â””â”€â”€ azure-deploy.yml       CI/CD pipeline (Optimization 2)
-â”œâ”€â”€ CHANGELOG.md                   Dated entries per member
-â”œâ”€â”€ INSTRUCTIONS.md                Copy of the original assignment brief
-â””â”€â”€ README.md                      This file
+/
++-- diagram/
+|   +-- architecture.png           Final architecture diagram (PNG)
++-- deployment/
+|   +-- deploy.azcli               Bash Azure CLI script
+|   +-- deploy.ps1                 PowerShell mirror script
+|   +-- screenshots/               Portal evidence PNGs + captioned README
+|   +-- README.md                  Step-by-step deployment guide
++-- report/
+|   +-- cost-estimate.md           Cost report with Pricing Calculator screenshot
+|   +-- report.md                  Architecture + optimization writeup
+|   +-- screenshots/
+|       +-- pricing-calculator.png Azure Pricing Calculator estimate
++-- src/
+|   +-- server.js                  Express application
+|   +-- package.json               Dependencies
+|   +-- package-lock.json          Pinned dependency tree
+|   +-- public/                    Static UI assets (HTML, CSS, JS, products data)
+|   +-- README.md                  Local dev guide
++-- .github/
+|   +-- workflows/
+|       +-- azure-deploy.yml       CI/CD pipeline (Optimization 2)
++-- CHANGELOG.md                   Dated entries per member
++-- INSTRUCTIONS.md                Copy of the original assignment brief
++-- README.md                      This file
 ```
 
 ## Run locally
@@ -100,12 +101,6 @@ az group delete --name rg-genericmart-cloud --yes --no-wait
 ```
 
 Resources cease accruing cost immediately once the resource group is gone.
-
-## Group commit progression
-
-The `commit-steps/` sibling folder (one directory above this README, at the project root) contains an 18-step ordered breakdown of the work, assigning each commit to a specific team member. Each member follows the steps assigned to them so the GitHub commit history reflects "equal, regular contributions" as the rubric requires.
-
-Read `commit-steps/README.md` first.
 
 ## License
 
@@ -149,4 +144,3 @@ Quick map of how this repository satisfies the CSEC 3 Final Project rubric for g
 | **D3: Pricing Calculator screenshot** | `report/screenshots/pricing-calculator.png` |
 | **D4: Live demo URL** | (see "Live demo" section above) |
 | **D4: YouTube video link** | (see "Live demo" section above) |
-

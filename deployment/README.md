@@ -7,7 +7,7 @@ Method A (Code) deployment via Azure CLI. Bash script (`deploy.azcli`) for Linux
 | # | Resource | Rubric requirement |
 |---|---|---|
 | 1 | Resource Group `rg-genericmart-cloud` | Container for all project resources |
-| 2 | App Service Plan + App Service (2 instances, Linux Node 20) | Core compute resource |
+| 2 | App Service Plan + App Service (2 instances, Linux Node 22) | Core compute resource |
 | 3 | Azure SQL Server + Azure SQL Database | Data resource |
 | 4 | Storage Account + Blob container `products` | Static asset hosting |
 | 5 | Managed Identity on App Service | Security control |

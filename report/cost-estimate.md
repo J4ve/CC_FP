@@ -29,15 +29,14 @@ GenericMart is a Node.js (Express) e-commerce storefront deployed on Azure. Cust
 
 > Insert Azure Pricing Calculator screenshot at `report/screenshots/pricing-calculator.png` and reference it below.
 
-| Resource | SKU / configuration | Quantity | Est. monthly cost (USD) |
-|---|---|---|---|
-| App Service Plan (Linux) | Standard S1, 1 core, 1.75 GB RAM | 1 instance baseline (730 hr) | $81.76 |
-| Azure SQL Database | DTU model, S0 (10 DTU), 250 GB cap | 1 database | $16.63 |
-| Azure Storage Account | Standard_LRS, hot tier, 5 GB stored + 10k transactions | 1 account | $1.14 |
-| Application Insights | Pay-as-you-go ingestion, first 5 GB/month free | 1 component + Log Analytics workspace | $0.00 (under free tier for our traffic) |
-| Bandwidth (egress) | First 100 GB free, then $0.087/GB | ~5 GB/month | $0.00 |
-| Azure Monitor / metrics | First 5 GB free | <1 GB | $0.00 |
-| **Total (baseline, monthly)** |  |  | **~$99.54 USD** |
+| Resource | SKU / configuration | Quantity | Monthly (USD) | Annual (USD) |
+|---|---|---|---|---|
+| App Service Plan (Linux) | Standard S1, 1 core, 1.75 GB RAM | 1 instance baseline (730 hr) | $81.76 | $981.12 |
+| Azure SQL Database | DTU model, S0 (10 DTU), 250 GB cap | 1 database | $16.63 | $199.58 |
+| Azure Storage Account | Block Blob, General Purpose V2, Standard_LRS, hot tier | 1 account, ~5 GB | $1.14 | $13.73 |
+| Azure Monitor / Application Insights | Log Analytics: 0 GB daily; Application Insights free tier | 1 workspace + 1 component | $0.00 | $0.00 |
+| Support plan | Basic (Included) | n/a | $0.00 | $0.00 |
+| **Total (baseline)** |  |  | **$99.54** | **$1,194.43** |
 
 > Note: Azure for Students grants $100 credit and free-tier App Service (F1) eligibility. The production-grade S1 SKU above will exceed that credit if left running for a full month. See cost optimization section below.
 
