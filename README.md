@@ -14,7 +14,7 @@
 
 ## Live demo
 
-- Application URL: `https://app-genericmart-1327081543903332108.azurewebsites.net` (fill in after deployment)
+- Application URL: <https://app-genericmart-1327081543903332108.azurewebsites.net>
 - Video presentation (unlisted YouTube): `https://youtu.be/<your-video>` (fill in after recording)
 
 ## What is this?
@@ -29,7 +29,7 @@ A simple Node.js Express storefront deployed on Microsoft Azure. Customers brows
 | Data | Azure SQL Database | DTU S0 |
 | Storage | Azure Storage Account | StorageV2, Standard_LRS, Blob container `products` |
 | Security control | Managed Identity on Web App | Secret-less auth to Azure resources |
-| Optimization 1 | App Service Plan autoscale | CPU 70/30, min 2 max 4 |
+| Optimization 1 | Application Insights | Auto-instruments requests/dependencies/exceptions, backed by Log Analytics workspace |
 | Optimization 2 | GitHub Actions CI/CD | Build, package, deploy, smoke-test |
 
 See `diagram/architecture.png` for the visual, `report/report.md` for the full design writeup.

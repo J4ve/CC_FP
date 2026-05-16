@@ -16,7 +16,7 @@ Method A (Code) deployment via Azure CLI. Bash script (`deploy.azcli`) for Linux
 
 | # | Optimization | Section 6 category |
 |---|---|---|
-| 1 | App Service Plan autoscale (CPU > 70% scale-out, CPU < 30% scale-in, min 2 max 4) | Scalability |
+| 1 | Application Insights telemetry (auto-instruments Web App, linked Log Analytics workspace) | Monitoring &amp; Operations |
 | 2 | GitHub Actions CI/CD pipeline (see `.github/workflows/azure-deploy.yml`) | Security & DevOps |
 
 ## Prerequisites
@@ -100,7 +100,7 @@ Take Azure Portal screenshots for `deployment/screenshots/`:
 - `02-app-service-instances.png` - Scale out blade showing 2+ instances
 - `03-sql-server.png` - SQL Server overview
 - `04-storage-account.png` - Blob container
-- `05-autoscale.png` - Autoscale rules
+- `05-app-insights.png` - Application Insights overview
 - `06-managed-identity.png` - Identity tab
 - `07-app-running.png` - browser hitting live URL
 
