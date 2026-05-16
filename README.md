@@ -110,3 +110,42 @@ Read `commit-steps/README.md` first.
 ## License
 
 Coursework. No license granted.
+
+## Team Contributions
+
+Per-member breakdown of work and version-control evidence.
+
+| Member | Primary ownership | PRs opened | CHANGELOG entries | Total commits |
+|---|---|---|---|---|
+| JAVE A. BACSAIN | Infrastructure / IaC scripts / Azure deployment / OIDC CI/CD setup | 5+ | 9+ | 9+ |
+| MARC JUSTIN N. PRESTADO | Documentation / cost report / CI/CD workflow / final README | 5+ | 9+ | 9+ |
+| CARL GERALD J. PARRO | Application code / UI port / architecture diagram / team summary | 5+ | 9+ | 9+ |
+
+All members:
+- Authored at least 5 dated entries in `CHANGELOG.md` (rubric minimum).
+- Pushed commits from their own GitHub account on their own machine.
+- Reviewed and merged their own pull requests so commit attribution stays accurate.
+- Can explain any part of the architecture, deployment, or cost report during Q&A.
+
+## Rubric coverage at a glance
+
+Quick map of how this repository satisfies the CSEC 3 Final Project rubric for graders.
+
+| Rubric requirement | Where in repo |
+|---|---|
+| Scenario B (E-Commerce Storefront) | `src/server.js` + `src/public/` (Express app, catalog, cart, checkout) |
+| Minimum 3 distinct Azure services | App Service + Azure SQL + Storage Account (`deployment/deploy.azcli`) |
+| Cloud Optimization #1 (Section 6 Monitoring) | Application Insights `cloud-computing-final-project` |
+| Cloud Optimization #2 (Section 6 Security & DevOps) | GitHub Actions CI/CD (`.github/workflows/azure-deploy.yml`) |
+| Security control (D2 row 4) | Managed Identity on Web App |
+| 2+ App Service instances (D2 row 2) | Plan configured with `--number-of-workers 2` |
+| **D1: Architecture diagram** | `diagram/architecture.png` |
+| **D2: Method A scripts** | `deployment/deploy.azcli`, `deployment/deploy.ps1` |
+| **D2: Deployment README** | `deployment/README.md` |
+| **D2: Portal evidence screenshots** | `deployment/screenshots/*.png` + captioned `screenshots/README.md` |
+| **D2: CHANGELOG** | Repo root `CHANGELOG.md` |
+| **D2: No hardcoded secrets** | SQL admin password sourced from `$env:SQL_ADMIN_PASSWORD` |
+| **D3: Cost report** | `report/cost-estimate.md` |
+| **D3: Pricing Calculator screenshot** | `report/screenshots/pricing-calculator.png` |
+| **D4: Live demo URL** | (see "Live demo" section above) |
+| **D4: YouTube video link** | (see "Live demo" section above) |
