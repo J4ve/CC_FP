@@ -12,6 +12,10 @@ Evidence captures supporting Deliverable 2 (Deployment Documentation) and Delive
 | `06-managed-identity.png` | Web App `app-genericmart-1327081543903332108` -> Identity blade -> System assigned tab | **Status: On**. Object (principal) ID + Tenant ID visible. Web App authenticates to Azure resources via this identity without storing client secrets. | D2 row 4: A security control - Managed Identity |
 | `07-app-running.png` | Live application URL in browser | `https://app-genericmart-1327081543903332108.azurewebsites.net/` rendering the GenericMart product catalog page. TeknikkTorget-derived UI with Philippine peso prices. Cart, checkout, /health endpoint all functional. | D4 live demo: application runs end-to-end in browser |
 | `08-cicd-actions-run.png` | GitHub Actions workflow run | Successful run of `.github/workflows/azure-deploy.yml` (green checkmark). Triggered by push to main with `src/**` changes. Steps: Checkout -> setup-node + npm cache -> npm ci -> zip -> Azure login via OIDC -> webapps-deploy -> curl /health smoke test. | Optimization #2 - Section 6 Security & DevOps (CI/CD Automation) |
+| `09-app-catalog.png` | Live app catalog page in browser at the live URL | Full TeknikkTorget-derived product grid rendered from Azure SQL, Philippine peso prices, search + sort + category chips visible. | D4 Live demo Segment 2 (extra evidence) |
+| `10-app-cart.png` | Cart page after adding products | Cart table with line items, quantities, line totals, subtotal in pesos, Continue shopping + Checkout actions. | D4 Live demo Segment 2 (extra evidence) |
+| `11-app-checkout.png` | Checkout confirmation flow | Checkout page or post-checkout orders view, proving the cart-to-SQL persistence path works end-to-end. | D4 Live demo Segment 2 (extra evidence) |
+| `12-app-search.png` | Catalog with search bar active | Search input filtered to a brand or product name, demonstrating the client-side search feature. | D4 Live demo Segment 2 (extra evidence) |
 
 ## Capture procedure
 
