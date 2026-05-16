@@ -1,0 +1,124 @@
+/* GenericMart - Accessibility overrides
+   Blueprint §6.2: font scale, high contrast, reduced motion, audio toggle.
+   Toggled via html data attributes set by js/a11y.js, persisted to localStorage. */
+
+/* Font scale applied at root so every rem-based size scales (Bootstrap + ours) */
+html[data-tt-font="14"] { font-size: 14px; }
+html[data-tt-font="16"] { font-size: 16px; }
+html[data-tt-font="18"] { font-size: 18px; }
+html[data-tt-font="20"] { font-size: 20px; }
+html[data-tt-font="22"] { font-size: 22px; }
+
+/* High contrast mode (overrides dark mode if both set) */
+html[data-tt-contrast="high"] {
+  --tt-surface-bg:        #000000;
+  --tt-surface-card:      #0d0d0d;
+  --tt-surface-low:       #1a1a1a;
+  --tt-surface-variant:   #262626;
+  --tt-text-primary:      #ffffff;
+  --tt-text-secondary:    #f0f0f0;
+  --tt-border-subtle:     #ffffff;
+  --tt-outline-variant:   #cccccc;
+  --tt-primary:           #ffd600;
+  --tt-on-primary:        #000000;
+  --tt-primary-container: #fff176;
+  --tt-secondary:         #80d8ff;
+  --tt-accent-sale:       #ff5252;
+  --tt-status-success:    #6dff7a;
+  color-scheme: dark;
+}
+html[data-tt-contrast="high"] body { background: #000; color: #fff; }
+html[data-tt-contrast="high"] .tt-navbar { background: #000; border-bottom-color: #fff; }
+html[data-tt-contrast="high"] .tt-product-card,
+html[data-tt-contrast="high"] .tt-bento .bento-card,
+html[data-tt-contrast="high"] .modal-content,
+html[data-tt-contrast="high"] .tt-minicart,
+html[data-tt-contrast="high"] .tt-footer,
+html[data-tt-contrast="high"] .card,
+html[data-tt-contrast="high"] .tt-list-row {
+  background: #0d0d0d; color: #fff; border-color: #fff;
+}
+html[data-tt-contrast="high"] .form-control,
+html[data-tt-contrast="high"] .form-select {
+  background: #1a1a1a; color: #fff; border-color: #fff;
+}
+html[data-tt-contrast="high"] .btn-primary,
+html[data-tt-contrast="high"] .tt-product-card .add-btn { background: #ffd600; color: #000; }
+html[data-tt-contrast="high"] a { color: #80d8ff; }
+html[data-tt-contrast="high"] .tt-pill.is-active { background: #ffd600; color: #000; }
+html[data-tt-contrast="high"] .btn-close { filter: invert(1); }
+
+/* Reduced motion */
+html[data-tt-motion="reduced"] *,
+html[data-tt-motion="reduced"] *::before,
+html[data-tt-motion="reduced"] *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* Honor system preference too */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+/* A11y panel - slide-in side sheet */
+.tt-a11y-panel {
+  position: fixed; right: -360px; top: 0; bottom: 0; width: 340px; max-width: 90vw;
+  background: var(--tt-surface-card); color: var(--tt-text-primary);
+  box-shadow: -8px 0 24px rgba(0,0,0,0.18);
+  z-index: 1085; transition: right 0.25s ease;
+  display: flex; flex-direction: column;
+}
+.tt-a11y-panel.is-open { right: 0; }
+.tt-a11y-panel .head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 1.25rem; border-bottom: 1px solid var(--tt-border-subtle);
+}
+.tt-a11y-panel .head h3 { font-size: 1rem; font-weight: 700; margin: 0; }
+.tt-a11y-panel .body { padding: 1rem 1.25rem; overflow-y: auto; flex: 1; }
+.tt-a11y-panel .row {
+  display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;
+  padding: 0.75rem 0; border-bottom: 1px dashed var(--tt-border-subtle);
+}
+.tt-a11y-panel .row:last-child { border-bottom: 0; }
+.tt-a11y-panel .row label { font-size: 0.9rem; font-weight: 500; }
+.tt-a11y-panel button.size {
+  border: 1px solid var(--tt-border-subtle); background: var(--tt-surface-card); color: var(--tt-text-primary);
+  border-radius: 0.25rem; padding: 0.25rem 0.55rem; font-weight: 600; min-width: 36px;
+}
+.tt-a11y-panel button.size.is-active { background: var(--tt-primary); color: var(--tt-on-primary); border-color: var(--tt-primary); }
+.tt-a11y-panel input[type="range"] { width: 140px; }
+.tt-a11y-panel .col-count { font-variant-numeric: tabular-nums; font-weight: 700; min-width: 1.5rem; text-align: center; }
+.tt-a11y-panel .lang-grp { display: flex; gap: 0.4rem; }
+.tt-a11y-panel .lang-grp button {
+  border: 1px solid var(--tt-border-subtle); background: var(--tt-surface-card);
+  color: var(--tt-text-primary); border-radius: 0.25rem; padding: 0.25rem 0.55rem; font-weight: 700; font-size: 0.75rem;
+}
+.tt-a11y-panel .lang-grp button.is-active { background: var(--tt-primary); color: var(--tt-on-primary); border-color: var(--tt-primary); }
+.tt-a11y-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 1084; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+.tt-a11y-backdrop.is-open { opacity: 1; pointer-events: auto; }
+
+/* Focus rings - always visible */
+:focus-visible {
+  outline: 3px solid var(--tt-secondary) !important;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+html[data-tt-contrast="high"] :focus-visible {
+  outline-color: #ffd600 !important;
+}
+
+/* Live region for announcements (visually hidden) */
+#tt-live-region {
+  position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;
+}
+
+/* Skip link */
+.tt-skip-link {
+  position: absolute; left: -9999px; top: 0;
+  background: var(--tt-primary); color: var(--tt-on-primary);
+  padding: 0.5rem 1rem; z-index: 9999; border-radius: 0 0 0.5rem 0;
+}
+.tt-skip-link:focus { left: 0; }

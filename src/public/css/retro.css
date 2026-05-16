@@ -1,0 +1,212 @@
+/* GenericMart - Retro Mode (true-arngren palette)
+   Blueprint §5.6: nostalgic Arngren-density, but functional.
+   Honour the original arngren.net visual language: white background, gray outlines,
+   plain serif text, dense compact grid, blue underlined links. No colourful flourishes.
+   Toggled via html[data-tt-mode="retro"] from js/retro.js. */
+
+html[data-tt-mode="retro"] {
+  --tt-surface-bg:    #ffffff;
+  --tt-surface-card:  #ffffff;
+  --tt-surface-low:   #f4f4f4;
+  --tt-surface-variant:#eaeaea;
+  --tt-text-primary:  #111111;
+  --tt-text-secondary:#444444;
+  --tt-border-subtle: #b0b0b0;
+  --tt-outline-variant:#888888;
+  --tt-primary:       #0033aa;
+  --tt-on-primary:    #ffffff;
+  --tt-primary-container:#0044cc;
+  --tt-secondary:     #0033aa;
+  --tt-accent-sale:   #cc0000;
+  --tt-status-success:#006600;
+  --tt-error:         #cc0000;
+  --tt-retro-accent:  #999999;
+  font-family: "Times New Roman", Georgia, serif;
+}
+html[data-tt-mode="retro"] body {
+  background: var(--tt-surface-bg);
+  color: var(--tt-text-primary);
+  font-family: "Times New Roman", Georgia, serif;
+}
+
+/* Navbar - flat white with gray bottom rule, brand becomes serif bold */
+html[data-tt-mode="retro"] .tt-navbar {
+  background: #ffffff !important;
+  border-bottom: 1px solid var(--tt-border-subtle);
+  backdrop-filter: none;
+}
+html[data-tt-mode="retro"] .tt-brand {
+  color: var(--tt-primary);
+  font-family: "Times New Roman", Georgia, serif;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+/* Hero - drop the gradient, plain white block with bordered title */
+html[data-tt-mode="retro"] .tt-hero {
+  background: #ffffff;
+  color: var(--tt-text-primary);
+  min-height: auto;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--tt-border-subtle);
+}
+html[data-tt-mode="retro"] .tt-hero::before { display: none; }
+html[data-tt-mode="retro"] .tt-hero h1 {
+  color: var(--tt-text-primary);
+  font-weight: 700;
+  font-size: 1.75rem;
+  text-shadow: none;
+  border-bottom: 2px solid var(--tt-text-primary);
+  padding-bottom: 0.25rem;
+  display: inline-block;
+}
+html[data-tt-mode="retro"] .tt-hero .lead { color: var(--tt-text-primary); font-size: 0.95rem; }
+html[data-tt-mode="retro"] .tt-hero-eyebrow {
+  background: transparent; color: var(--tt-text-primary);
+  border: 1px solid var(--tt-border-subtle); border-radius: 0;
+}
+html[data-tt-mode="retro"] .tt-hero .btn-cta {
+  background: #ffffff; color: var(--tt-primary);
+  border: 1px solid var(--tt-border-subtle); font-weight: 700; border-radius: 0;
+  text-decoration: underline;
+}
+html[data-tt-mode="retro"] .tt-hero .btn-cta:hover { background: var(--tt-surface-low); }
+
+/* Dense product grid: ignore user grid-cols, force 5–6 cols at desktop */
+@media (min-width: 768px) {
+  html[data-tt-mode="retro"] .tt-grid-products:not(.tt-list-view) {
+    grid-template-columns: repeat(5, 1fr) !important;
+    gap: 0.5rem !important;
+  }
+}
+@media (min-width: 1200px) {
+  html[data-tt-mode="retro"] .tt-grid-products:not(.tt-list-view) {
+    grid-template-columns: repeat(6, 1fr) !important;
+  }
+}
+/* List view stays a flex column even in retro */
+html[data-tt-mode="retro"] .tt-grid-products.tt-list-view {
+  display: flex !important;
+  flex-direction: column !important;
+  grid-template-columns: none !important;
+  gap: 0.4rem !important;
+}
+
+/* Product card: square, gray outline, no shadow, blue underlined name */
+html[data-tt-mode="retro"] .tt-product-card {
+  border-radius: 0;
+  border: 1px solid var(--tt-border-subtle);
+  background: var(--tt-surface-card);
+  box-shadow: none;
+}
+html[data-tt-mode="retro"] .tt-product-card:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--tt-primary);
+}
+html[data-tt-mode="retro"] .tt-product-card .body { padding: 0.4rem; }
+html[data-tt-mode="retro"] .tt-product-card .name {
+  font-size: 0.78rem; font-weight: 700; color: var(--tt-primary);
+  text-decoration: underline; -webkit-line-clamp: 3;
+}
+html[data-tt-mode="retro"] .tt-product-card .price {
+  font-size: 0.95rem;
+  color: var(--tt-accent-sale);
+  font-weight: 700;
+  font-family: "Times New Roman", Georgia, serif;
+}
+html[data-tt-mode="retro"] .tt-product-card .price-old { color: var(--tt-text-secondary); }
+html[data-tt-mode="retro"] .tt-product-card .chips,
+html[data-tt-mode="retro"] .tt-product-card .stars,
+html[data-tt-mode="retro"] .tt-product-card .reviews { display: none; }
+html[data-tt-mode="retro"] .tt-product-card .badge-corner {
+  background: var(--tt-surface-card) !important;
+  color: var(--tt-accent-sale) !important;
+  border: 1px solid var(--tt-accent-sale);
+  border-radius: 0;
+  font-weight: 700;
+}
+html[data-tt-mode="retro"] .tt-product-card .add-btn {
+  background: var(--tt-surface-low);
+  color: var(--tt-primary);
+  border: 1px solid var(--tt-border-subtle);
+  border-radius: 0;
+}
+html[data-tt-mode="retro"] .tt-product-card .add-btn:hover { background: var(--tt-primary); color: #fff; }
+
+/* List rows in retro: tight, single-line, underlined name */
+html[data-tt-mode="retro"] .tt-list-row {
+  border-radius: 0; padding: 0.4rem; gap: 0.6rem;
+  border-color: var(--tt-border-subtle);
+}
+html[data-tt-mode="retro"] .tt-list-row .thumb {
+  width: 80px; height: 80px; border-radius: 0;
+}
+html[data-tt-mode="retro"] .tt-list-row a { color: var(--tt-primary); text-decoration: underline; }
+
+/* Bento → simple bordered category boxes (lose imagery scrim) */
+html[data-tt-mode="retro"] .tt-bento { grid-auto-rows: 80px; gap: 0.4rem; }
+html[data-tt-mode="retro"] .tt-bento .bento-lg { grid-column: span 1; grid-row: span 1; }
+html[data-tt-mode="retro"] .tt-bento .bento-card {
+  border: 1px solid var(--tt-border-subtle); border-radius: 0; min-height: 80px; background: var(--tt-surface-card);
+}
+html[data-tt-mode="retro"] .tt-bento .bento-card img { display: none; }
+html[data-tt-mode="retro"] .tt-bento .bento-card .scrim { background: transparent; }
+html[data-tt-mode="retro"] .tt-bento .bento-card .body {
+  position: static; padding: 0.5rem; color: var(--tt-primary);
+}
+html[data-tt-mode="retro"] .tt-bento .bento-card h3 {
+  font-size: 0.95rem; text-decoration: underline; color: var(--tt-primary);
+}
+html[data-tt-mode="retro"] .tt-bento .bento-card p  { display: none; }
+
+/* Section heading */
+html[data-tt-mode="retro"] .tt-section-heading {
+  font-size: 1.25rem; font-weight: 700;
+  color: var(--tt-text-primary);
+  border-bottom: 1px solid var(--tt-border-subtle);
+  padding-bottom: 0.25rem;
+}
+
+/* Sidebar: tighter, plain */
+html[data-tt-mode="retro"] .tt-sidebar { background: var(--tt-surface-card); border-right-color: var(--tt-border-subtle); }
+html[data-tt-mode="retro"] .tt-sidebar .cat-link { text-transform: none; letter-spacing: 0; font-size: 0.85rem; padding: 0.4rem 0.5rem; }
+html[data-tt-mode="retro"] .tt-sidebar .cat-link.is-active {
+  background: var(--tt-surface-low); color: var(--tt-primary);
+  border-right: 2px solid var(--tt-primary);
+  text-decoration: underline;
+}
+
+/* Footer */
+html[data-tt-mode="retro"] .tt-footer { background: var(--tt-surface-card); border-top-color: var(--tt-border-subtle); }
+html[data-tt-mode="retro"] .tt-footer a { color: var(--tt-primary); text-decoration: underline; }
+
+/* Marquee strip - gray rule with text scrolling at slow pace */
+.tt-retro-marquee {
+  background: var(--tt-surface-low);
+  color: var(--tt-text-primary);
+  padding: 0.25rem 0;
+  font-family: "Times New Roman", Georgia, serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-align: center;
+  border-bottom: 1px solid var(--tt-border-subtle);
+  border-top: 1px solid var(--tt-border-subtle);
+  overflow: hidden;
+  white-space: nowrap;
+}
+html[data-tt-mode="retro"] .tt-retro-marquee { display: block; }
+@keyframes tt-marquee {
+  from { transform: translateX(100%); } to { transform: translateX(-100%); }
+}
+.tt-retro-marquee span {
+  display: inline-block; white-space: nowrap;
+  animation: tt-marquee 25s linear infinite;
+}
+html[data-tt-motion="reduced"] .tt-retro-marquee span { animation: none !important; transform: translateX(0) !important; }
+
+/* Buttons in retro: square corners */
+html[data-tt-mode="retro"] .btn { border-radius: 0; }
+html[data-tt-mode="retro"] .btn-primary { background: var(--tt-primary); color: var(--tt-on-primary); border: 1px solid var(--tt-primary); }
+html[data-tt-mode="retro"] .form-control, html[data-tt-mode="retro"] .form-select { border-radius: 0; }
