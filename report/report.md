@@ -42,15 +42,13 @@ Azure App Service (Linux, Node 20, S1, 2 instances)
 
 ## 4. Chosen cloud optimizations
 
-### Optimization 1: Autoscale (Scalability)
+### Optimization 1: Application Insights (Monitoring & Operations)
 
-The App Service Plan has an autoscale profile attached:
+The Web App is wired to an Application Insights component named `cloud-computing-final-project`. The instrumentation key and connection string are injected as App Service appsettings (`APPINSIGHTS_INSTRUMENTATIONKEY`, `APPLICATIONINSIGHTS_CONNECTION_STRING`). Application Insights captures every request, dependency call, exception, and performance metric automatically. Telemetry flows into a Log Analytics workspace (`cloud-computing-final-project-logs`) for query-based dashboards and alerts.
 
-- **Scale out:** CPU average > 70% over 5 minutes -> add 1 instance.
-- **Scale in:** CPU average < 30% over 10 minutes -> remove 1 instance.
-- **Bounds:** minimum 2, maximum 4 instances.
+Effect: production-grade observability without manual instrumentation. Demo-friendly Live Metrics blade in the Azure Portal shows requests-per-second in real time.
 
-Effect: during demo load (e.g., simulated traffic from a load tool), the plan adds instances automatically. During quiet periods, it returns to the baseline 2 instances to control cost.
+> Note on the original plan: we initially scoped Optimization #1 as App Service Plan autoscale (Section 6 Scalability). `az monitor autoscale create` returned `ResourceNotFound: None` even after registering `Microsoft.Insights` and verifying the underlying plan id, which appears to be a known Azure CLI bug. We pivoted to Application Insights which sits in the same Section 6 list (Monitoring & Operations) and preserves the "at least two cloud optimizations" requirement. The App Service Plan still runs 2 manually-scaled instances so Deliverable 2 row 2 stays satisfied.
 
 ### Optimization 2: GitHub Actions CI/CD (Security & DevOps)
 
