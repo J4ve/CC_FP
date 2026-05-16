@@ -7,6 +7,7 @@ This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 ## [Unreleased]
 
 ### Added
+- `MARC JUSTIN N. PRESTADO` - Added `src/public/css/*.css` and `src/public/js/*.js` on 2026-05-16: ported TeknikkTorget UI assets (3 stylesheets - custom theme, a11y overrides, retro mode; 10 client scripts - main store, i18n, cart, catalog, home, product, a11y, retro, ui-components, validation). Rebranded all references from TeknikkTorget to GenericMart. Updated price formatter to use ₱ (Philippine peso) prefix instead of kr.
 - placeholder for future changes
 
 ---
