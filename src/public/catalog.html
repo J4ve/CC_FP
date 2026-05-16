@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<!--
+  GenericMart - Catalog page
+  Blueprint §5.2 (grid + cards), §5.3 (autocomplete + filter chips), §6.3 (responsive).
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Catalog - GenericMart</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="css/custom.css" rel="stylesheet">
+<link href="css/a11y.css" rel="stylesheet">
+<link href="css/retro.css" rel="stylesheet">
+</head>
+<body>
+
+<a href="#tt-main" class="tt-skip-link">Skip to main content</a>
+
+<div id="tt-retro-marquee" class="tt-retro-marquee" aria-hidden="true">
+  <span>★ GENERICMART WAREHOUSE SALE ★ FREE SHIPPING OVER ₱5,300 ★ NEW DRONES IN STOCK ★</span>
+</div>
+
+<header class="tt-navbar">
+  <div class="container-fluid d-flex align-items-center" style="max-width:1440px;height:64px;gap:1rem">
+    <button class="btn btn-link d-lg-none p-2 text-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#tt-mobile-filters" aria-label="Open filters">
+      <span class="material-symbols-outlined">tune</span>
+    </button>
+    <a href="index.html" class="tt-brand">GenericMart</a>
+
+    <div class="tt-search d-none d-md-block flex-grow-1" style="max-width:420px">
+      <span class="material-symbols-outlined search-icon" aria-hidden="true">search</span>
+      <input id="tt-search-input" type="search" class="form-control"
+             data-i18n-attr="placeholder:search.placeholder,aria-label:search.aria"
+             role="combobox" aria-autocomplete="list" aria-controls="tt-search-dropdown" aria-expanded="false" autocomplete="off">
+      <div id="tt-search-dropdown" class="tt-search-dropdown" role="listbox" style="display:none"></div>
+    </div>
+
+    <nav class="ms-auto d-none d-lg-flex align-items-center gap-3" aria-label="Primary">
+      <a class="nav-link" data-tt-nav="index.html"   href="index.html"   data-i18n="nav.home">Home</a>
+      <a class="nav-link active" data-tt-nav="catalog.html" href="catalog.html" data-i18n="nav.catalog">Catalog</a>
+    </nav>
+
+    <button class="tt-lang-pill ms-2" type="button" data-tt-lang-toggle aria-label="Toggle language">
+      <span class="material-symbols-outlined" style="font-size:16px" aria-hidden="true">translate</span>
+      <span data-tt-lang-label>EN</span>
+    </button>
+    <button class="tt-icon-btn" data-tt-retro-toggle aria-pressed="false" aria-label="Toggle Retro Mode">
+      <span class="material-symbols-outlined" aria-hidden="true">history</span>
+    </button>
+    <button class="tt-icon-btn" data-tt-a11y-toggle aria-label="Open accessibility settings">
+      <span class="material-symbols-outlined" aria-hidden="true">accessibility</span>
+    </button>
+    <button class="tt-icon-btn" type="button" onclick="GM.openMiniCart()" data-i18n-attr="aria-label:nav.openCart">
+      <span class="material-symbols-outlined" aria-hidden="true">shopping_cart</span>
+      <span class="badge-pill" data-tt-cart-badge style="display:none">0</span>
+    </button>
+  </div>
+</header>
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="tt-mobile-filters" aria-labelledby="tt-mobile-filters-title">
+  <div class="offcanvas-header">
+    <h2 class="offcanvas-title h6" id="tt-mobile-filters-title">Filters</h2>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body" id="tt-mobile-filter-slot"></div>
+</div>
+
+<main id="tt-main">
+  <nav class="container-fluid tt-breadcrumb" style="max-width:1440px" aria-label="Breadcrumb">
+    <a href="index.html" data-i18n="breadcrumb.home">Home</a> <span aria-hidden="true">›</span>
+    <span aria-current="page" data-i18n="breadcrumb.catalog">Catalog</span>
+  </nav>
+
+  <div class="container-fluid pb-5" style="max-width:1440px">
+    <div class="row g-3">
+
+      <aside class="col-lg-3 d-none d-lg-block" id="tt-filter-rail">
+        <div class="tt-sidebar rounded">
+          <h2 data-i18n="sidebar.categories">Categories</h2>
+          <nav id="tt-cat-list" class="d-flex flex-column gap-1" aria-label="Category navigation"></nav>
+          <hr>
+          <h2 class="h6 mb-2" data-i18n="sidebar.brand">Brand</h2>
+          <select id="tt-brand-filter" class="form-select form-select-sm mb-3" aria-label="Filter by brand"></select>
+
+          <h2 class="h6 mb-2" data-i18n="sidebar.price">Price (kr)</h2>
+          <div class="row g-2 mb-3">
+            <div class="col-6">
+              <label for="tt-min-price" class="form-label small mb-1" data-i18n="sidebar.min">Min</label>
+              <input id="tt-min-price" type="number" min="0" max="25000" step="100" value="0" class="form-control form-control-sm">
+            </div>
+            <div class="col-6">
+              <label for="tt-max-price" class="form-label small mb-1" data-i18n="sidebar.max">Max</label>
+              <input id="tt-max-price" type="number" min="0" max="25000" step="100" value="25000" class="form-control form-control-sm">
+            </div>
+          </div>
+
+          <h2 class="h6 mb-2" data-i18n="sidebar.motor">Motor power</h2>
+          <select id="tt-motor-filter" class="form-select form-select-sm mb-3" aria-label="Filter by motor"></select>
+
+          <h2 class="h6 mb-2" data-i18n="sidebar.battery">Battery type</h2>
+          <select id="tt-battery-filter" class="form-select form-select-sm mb-3" aria-label="Filter by battery"></select>
+
+          <hr>
+          <button class="cat-link w-100 text-start" data-tt-retro-toggle aria-pressed="false">
+            <span class="material-symbols-outlined" aria-hidden="true">history</span>
+            <span class="retro-label">Retro Mode</span>
+          </button>
+        </div>
+      </aside>
+
+      <section class="col-lg-9">
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+          <h1 class="h4 fw-bold mb-0" data-i18n="catalog.title">Catalog</h1>
+          <div class="d-flex gap-2 align-items-center flex-wrap">
+            <label for="tt-sort" class="form-label small mb-0" data-i18n="catalog.sort">Sort</label>
+            <select id="tt-sort" class="form-select form-select-sm" style="width:auto"></select>
+            <div class="btn-group" role="group" aria-label="View toggle">
+              <button type="button" class="btn btn-sm btn-primary"           data-view="grid" aria-label="Grid view" aria-pressed="true">
+                <span class="material-symbols-outlined" style="font-size:18px" aria-hidden="true">grid_view</span>
+              </button>
+              <button type="button" class="btn btn-sm btn-outline-secondary" data-view="list" aria-label="List view" aria-pressed="false">
+                <span class="material-symbols-outlined" style="font-size:18px" aria-hidden="true">view_list</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div id="tt-active-chips" class="d-flex flex-wrap gap-2 mb-3" aria-live="polite"></div>
+        <p id="tt-summary" class="text-muted small mb-3"></p>
+
+        <div id="tt-grid" class="tt-grid-products"></div>
+
+        <nav class="d-flex justify-content-center gap-2 mt-4" id="tt-pagination" aria-label="Pagination"></nav>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer class="tt-footer">
+  <div class="container-fluid" style="max-width:1440px">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="tt-brand">GenericMart</div>
+        <p class="text-muted small mt-2" data-i18n="footer.tagline">Curated catalog. Engineered for the demanding enthusiast.</p>
+      </div>
+      <div class="col-6 col-md-2"><h4 data-i18n="footer.shop">Shop</h4><ul><li><a href="catalog.html" data-i18n="nav.catalog">Catalog</a></li><li><a href="cart.html" data-i18n="nav.cart">Cart</a></li></ul></div>
+      <div class="col-6 col-md-2"><h4 data-i18n="footer.support">Support</h4><ul><li><a href="#" data-i18n="footer.contact">Contact</a></li><li><a href="#" data-i18n="footer.faq">FAQ</a></li></ul></div>
+      <div class="col-md-2"><h4 data-i18n="footer.legal">Legal</h4><ul><li><a href="#" data-i18n="footer.privacy">Privacy</a></li><li><a href="#" data-i18n="footer.terms">Terms</a></li></ul></div>
+      <div class="col-md-2"><h4 data-i18n="footer.access">Accessibility</h4>
+        <button class="btn btn-sm btn-outline-secondary w-100 mb-2" data-tt-a11y-toggle><span class="material-symbols-outlined align-middle me-1" aria-hidden="true">accessibility</span><span data-i18n="footer.access.settings">Settings</span></button>
+        <button class="btn btn-sm btn-outline-secondary w-100" data-tt-retro-toggle aria-pressed="false">
+          <span class="material-symbols-outlined align-middle me-1" aria-hidden="true">history</span>
+          <span class="retro-label">Retro Mode</span>
+        </button>
+      </div>
+    </div>
+    <div class="copyright">© 2026 GenericMart AS</div>
+  </div>
+</footer>
+
+<button type="button" class="tt-help-fab" data-bs-toggle="modal" data-bs-target="#tt-help-modal" data-i18n-attr="aria-label:nav.openHelp">
+  <span class="material-symbols-outlined" aria-hidden="true">help</span>
+</button>
+<div class="modal fade" id="tt-help-modal" tabindex="-1" aria-labelledby="tt-help-title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered"><div class="modal-content">
+    <div class="modal-header"><h2 class="modal-title h5" id="tt-help-title" data-i18n="help.title">Need help?</h2><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+    <div class="modal-body"><ul class="list-unstyled m-0">
+      <li class="mb-2"><a href="#"><span class="material-symbols-outlined align-middle me-2" aria-hidden="true">live_help</span><span data-i18n="help.faq">FAQ</span></a></li>
+      <li class="mb-2"><a href="#"><span class="material-symbols-outlined align-middle me-2" aria-hidden="true">mail</span><span data-i18n="help.contact">Contact form</span></a></li>
+    </ul></div>
+  </div></div>
+</div>
+
+<div class="tt-minicart-backdrop" onclick="GM.closeMiniCart()"></div>
+<aside class="tt-minicart" aria-label="Mini cart">
+  <div class="head">
+    <h2 data-i18n="minicart.title">Cart</h2>
+    <span id="tt-minicart-count" class="text-muted small fw-normal ms-2">(0)</span>
+    <button type="button" class="btn-close ms-auto" onclick="GM.closeMiniCart()" aria-label="Close"></button>
+  </div>
+  <div id="tt-minicart-body" class="body"></div>
+  <div class="foot">
+    <div class="d-flex justify-content-between mb-2"><span data-i18n="cart.summary.subtotal">Subtotal</span><strong id="tt-minicart-subtotal">₱0</strong></div>
+    <a href="cart.html" class="btn btn-primary w-100 mb-2" data-i18n="minicart.viewCart">View cart &amp; checkout</a>
+    <button type="button" class="btn btn-link w-100" onclick="GM.closeMiniCart()" data-i18n="minicart.continue">Continue shopping</button>
+  </div>
+</aside>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+<script src="data/products.js" defer></script>
+<script src="js/i18n.js" defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/ui-components.js" defer></script>
+<script src="js/a11y.js" defer></script>
+<script src="js/retro.js" defer></script>
+<script src="js/catalog.js" defer></script>
+<script defer>
+  document.addEventListener('DOMContentLoaded', () => {
+    const rail = document.getElementById('tt-filter-rail');
+    const slot = document.getElementById('tt-mobile-filter-slot');
+    if (rail && slot) {
+      const mq = window.matchMedia('(max-width: 991.98px)');
+      const move = () => {
+        if (mq.matches && rail.parentElement.id !== 'tt-mobile-filter-slot') {
+          slot.appendChild(rail); rail.classList.remove('d-none','d-lg-block');
+        } else if (!mq.matches && rail.parentElement.id === 'tt-mobile-filter-slot') {
+          document.querySelector('main .row').prepend(rail); rail.classList.add('d-none','d-lg-block');
+        }
+      };
+      move(); mq.addEventListener('change', move);
+    }
+  });
+</script>
+</body>
+</html>

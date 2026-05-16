@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<!--
+  GenericMart - Checkout page
+  Blueprint §5.4: single-page form, inline validation, SSL banner, masked card, CVV tooltip.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checkout - GenericMart</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="css/custom.css" rel="stylesheet">
+<link href="css/a11y.css" rel="stylesheet">
+<link href="css/retro.css" rel="stylesheet">
+</head>
+<body>
+
+<a href="#tt-main" class="tt-skip-link">Skip to main content</a>
+
+<header class="tt-navbar">
+  <div class="container-fluid d-flex align-items-center" style="max-width:1440px;height:64px;gap:1rem">
+    <a href="index.html" class="tt-brand">GenericMart</a>
+    <div class="ms-auto small text-success d-flex align-items-center gap-1">
+      <span class="material-symbols-outlined" aria-hidden="true">lock</span>
+      <span>SSL · 256-bit</span>
+    </div>
+    <button class="tt-lang-pill ms-2" type="button" data-tt-lang-toggle aria-label="Toggle language">
+      <span class="material-symbols-outlined" style="font-size:16px" aria-hidden="true">translate</span>
+      <span data-tt-lang-label>EN</span>
+    </button>
+    <button class="tt-icon-btn" data-tt-a11y-toggle aria-label="Accessibility">
+      <span class="material-symbols-outlined" aria-hidden="true">accessibility</span>
+    </button>
+  </div>
+</header>
+
+<main id="tt-main">
+  <nav class="container-fluid tt-breadcrumb" style="max-width:1440px" aria-label="Breadcrumb">
+    <a href="index.html" data-i18n="breadcrumb.home">Home</a> <span aria-hidden="true">›</span>
+    <a href="cart.html" data-i18n="breadcrumb.cart">Cart</a> <span aria-hidden="true">›</span>
+    <span aria-current="page" data-i18n="breadcrumb.checkout">Checkout</span>
+  </nav>
+
+  <div class="container-fluid pb-5" style="max-width:1440px" id="tt-checkout-page">
+    <h1 class="h3 fw-bold mb-3" data-i18n="checkout.title">Checkout</h1>
+    <div class="tt-trust mb-3" role="status">
+      <span class="material-symbols-outlined" aria-hidden="true">verified_user</span>
+      <span>256-bit SSL · PCI-DSS · 30-day returns · Visa · Mastercard · PayPal · Vipps</span>
+    </div>
+
+    <form id="tt-checkout-form" novalidate class="row g-4" aria-label="Checkout form">
+      <section class="col-lg-7">
+        <div class="card mb-3">
+          <div class="card-body">
+            <h2 class="h6 fw-bold mb-3" data-i18n="checkout.contact">Contact</h2>
+            <div class="mb-3">
+              <label for="ck-email" class="form-label" data-i18n="checkout.email">Email</label>
+              <input id="ck-email" type="email" class="form-control" data-rule="email" autocomplete="email" required>
+            </div>
+            <div class="mb-3">
+              <label for="ck-name" class="form-label" data-i18n="checkout.name">Full name</label>
+              <input id="ck-name" type="text" class="form-control" data-rule="name" autocomplete="name" required>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-3">
+          <div class="card-body">
+            <h2 class="h6 fw-bold mb-3" data-i18n="checkout.shipping">Shipping address</h2>
+            <div class="mb-3">
+              <label for="ck-addr" class="form-label" data-i18n="checkout.address">Street address</label>
+              <input id="ck-addr" type="text" class="form-control" data-rule="address" autocomplete="street-address" required>
+            </div>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="ck-city" class="form-label" data-i18n="checkout.city">City</label>
+                <input id="ck-city" type="text" class="form-control" data-rule="city" autocomplete="address-level2" required>
+              </div>
+              <div class="col-md-3">
+                <label for="ck-zip" class="form-label" data-i18n="checkout.zip">Postal code</label>
+                <input id="ck-zip" type="text" inputmode="numeric" maxlength="4" class="form-control" data-rule="zip" autocomplete="postal-code" required>
+              </div>
+              <div class="col-md-3">
+                <label for="ck-country" class="form-label" data-i18n="checkout.country">Country</label>
+                <select id="ck-country" class="form-select" data-rule="country" required>
+                  <option value="" data-i18n="checkout.country.select">Select…</option>
+                  <option value="NO" selected>Norge</option>
+                  <option value="SE">Sverige</option>
+                  <option value="DK">Danmark</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-3">
+          <div class="card-body">
+            <h2 class="h6 fw-bold mb-3" data-i18n="checkout.payment">Payment</h2>
+            <div class="mb-3">
+              <label for="ck-card" class="form-label" data-i18n="checkout.card">Card number</label>
+              <input id="ck-card" type="text" inputmode="numeric" autocomplete="cc-number" class="form-control" placeholder="•••• •••• •••• ••••" data-rule="card" required>
+              <small class="text-muted" data-i18n="checkout.card.help">Card number is masked - we never store raw digits.</small>
+            </div>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="ck-exp" class="form-label" data-i18n="checkout.expiry">Expiry</label>
+                <input id="ck-exp" type="text" placeholder="MM/YY" autocomplete="cc-exp" class="form-control" data-rule="expiry" required>
+              </div>
+              <div class="col-md-6">
+                <label for="ck-cvv" class="form-label d-flex align-items-center gap-1">
+                  <span data-i18n="checkout.cvv">CVV</span>
+                  <span class="material-symbols-outlined" data-bs-toggle="tooltip" data-i18n-attr="data-bs-title:checkout.cvv.tip" data-bs-title="The 3-digit security code." style="font-size:1rem;cursor:help" tabindex="0" aria-label="What is CVV?">help</span>
+                </label>
+                <input id="ck-cvv" type="text" inputmode="numeric" maxlength="4" autocomplete="cc-csc" class="form-control" data-rule="cvv" required>
+              </div>
+            </div>
+            <div class="form-check mt-3">
+              <input id="ck-terms" type="checkbox" class="form-check-input" data-rule="terms" required>
+              <label for="ck-terms" class="form-check-label small">
+                <span data-i18n-html="checkout.terms.assembled">I accept the <a href="#">terms</a> and <a href="#">privacy</a>.</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="col-lg-5">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="h6 fw-bold" data-i18n="cart.summary.title">Order summary</h2>
+            <div id="tt-checkout-summary" class="my-3"></div>
+            <button type="submit" class="btn btn-primary w-100">
+              <span class="material-symbols-outlined align-middle me-1" aria-hidden="true">lock</span>
+              <span data-i18n="checkout.pay">Pay securely</span>
+            </button>
+            <small class="d-block text-muted mt-2 text-center" data-i18n="checkout.disclaimer">By placing this order you agree to our terms.</small>
+          </div>
+        </div>
+      </aside>
+    </form>
+  </div>
+</main>
+
+<footer class="tt-footer">
+  <div class="container-fluid" style="max-width:1440px">
+    <div class="copyright">© 2026 GenericMart AS</div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+<script src="data/products.js" defer></script>
+<script src="js/i18n.js" defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/ui-components.js" defer></script>
+<script src="js/a11y.js" defer></script>
+<script src="js/retro.js" defer></script>
+<script src="js/validation.js" defer></script>
+<script defer>
+  document.addEventListener('DOMContentLoaded', () => {
+    const renderSummary = () => {
+      const out = document.getElementById('tt-checkout-summary');
+      if (!out) return;
+      const cart = GM.getCart();
+      if (!cart.length) {
+        out.innerHTML = `<p class="text-muted small">${GM.t('cart.empty.title')}. <a href="catalog.html">${GM.t('cart.empty.browse')}</a>.</p>`;
+        return;
+      }
+      const subtotal = GM.cartSubtotal();
+      const shipping = subtotal >= 1000 ? 0 : 149;
+      const tax = subtotal * 0.25;
+      const total = subtotal + shipping + tax;
+      out.innerHTML = cart.map(it => {
+        const raw = GM_PRODUCTS.find(x => x.id === it.id);
+        const p = raw ? (GM.localizedProduct ? GM.localizedProduct(raw) : raw) : null;
+        return p ? `<div class="d-flex justify-content-between small mb-1"><span>${p.name} × ${it.qty}</span><span>${GM.formatPrice(GM.priceOf(raw) * it.qty)}</span></div>` : '';
+      }).join('') + `
+        <hr>
+        <div class="d-flex justify-content-between small mb-1"><span>${GM.t('cart.summary.subtotal')}</span><span>${GM.formatPrice(subtotal)}</span></div>
+        <div class="d-flex justify-content-between small mb-1"><span>${GM.t('cart.summary.shipping')}</span><span>${shipping === 0 ? GM.t('cart.summary.free') : GM.formatPrice(shipping)}</span></div>
+        <div class="d-flex justify-content-between small mb-2"><span>${GM.t('cart.summary.tax')}</span><span>${GM.formatPrice(tax)}</span></div>
+        <div class="d-flex justify-content-between fw-bold"><span>${GM.t('cart.summary.total')}</span><span>${GM.formatPrice(total)}</span></div>`;
+    };
+    renderSummary();
+    document.addEventListener('tt:lang-changed', renderSummary);
+
+    // Set localised inline text for terms/privacy links
+    const renderTerms = () => {
+      const el = document.querySelector('[data-i18n-html="checkout.terms.assembled"]');
+      if (!el) return;
+      const term = `<a href="#">${GM.t('checkout.terms.label')}</a>`;
+      const priv = `<a href="#">${GM.t('checkout.privacy.label')}</a>`;
+      el.innerHTML = GM.t('checkout.terms', { terms: term, privacy: priv });
+    };
+    renderTerms();
+    document.addEventListener('tt:lang-changed', renderTerms);
+
+    document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => new bootstrap.Tooltip(el));
+  });
+</script>
+</body>
+</html>

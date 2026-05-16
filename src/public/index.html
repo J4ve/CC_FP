@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<!--
+  GenericMart - Homepage
+  Blueprint §5.1 (sticky nav + hero + categories + footer), §5.5 (welcome guide).
+  Brand strictly GenericMart. Arngren.net is referenced only as a contrast example.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GenericMart - Robotics, Tools & Advanced Electronics</title>
+<meta name="description" content="Curated electronics, robotics, drones and precision tools for serious enthusiasts. Free shipping over ₱5,300.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="css/custom.css" rel="stylesheet">
+<link href="css/a11y.css" rel="stylesheet">
+<link href="css/retro.css" rel="stylesheet">
+</head>
+<body>
+
+<a href="#tt-main" class="tt-skip-link">Skip to main content</a>
+
+<div id="tt-retro-marquee" class="tt-retro-marquee" aria-hidden="true">
+  <span>★ GENERICMART WAREHOUSE SALE ★ FREE SHIPPING OVER ₱5,300 ★ NEW DRONES IN STOCK ★ STUDENT DISCOUNT 15% ★</span>
+</div>
+
+<!-- Top Navigation -->
+<header class="tt-navbar">
+  <div class="container-fluid d-flex align-items-center" style="max-width:1440px;height:64px;gap:1rem">
+    <button class="btn btn-link d-lg-none p-2 text-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#tt-mobile-nav" data-i18n-attr="aria-label:nav.menu">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+    <a href="index.html" class="tt-brand">GenericMart</a>
+
+    <div class="tt-search d-none d-md-block flex-grow-1" style="max-width:420px">
+      <span class="material-symbols-outlined search-icon" aria-hidden="true">search</span>
+      <input id="tt-search-input" type="search" class="form-control"
+             data-i18n-attr="placeholder:search.placeholder,aria-label:search.aria"
+             role="combobox" aria-autocomplete="list" aria-controls="tt-search-dropdown" aria-expanded="false" autocomplete="off">
+      <div id="tt-search-dropdown" class="tt-search-dropdown" role="listbox" style="display:none"></div>
+    </div>
+
+    <nav class="ms-auto d-none d-lg-flex align-items-center gap-3" aria-label="Primary">
+      <a class="nav-link" data-tt-nav="index.html"   href="index.html"                    data-i18n="nav.home">Home</a>
+      <a class="nav-link" data-tt-nav="catalog.html" href="catalog.html"                  data-i18n="nav.catalog">Catalog</a>
+      <a class="nav-link" data-tt-nav="catalog.html" href="catalog.html?cat=drones"       data-i18n="nav.drones">Drones</a>
+      <a class="nav-link" data-tt-nav="catalog.html" href="catalog.html?cat=vehicles"     data-i18n="nav.vehicles">Vehicles</a>
+    </nav>
+
+    <button class="tt-lang-pill ms-2" type="button" data-tt-lang-toggle aria-label="Toggle language">
+      <span class="material-symbols-outlined" style="font-size:16px" aria-hidden="true">translate</span>
+      <span data-tt-lang-label>EN</span>
+    </button>
+    <button class="tt-icon-btn" data-tt-retro-toggle aria-pressed="false" title="Retro Mode" aria-label="Toggle Retro Mode">
+      <span class="material-symbols-outlined" aria-hidden="true">history</span>
+    </button>
+    <button class="tt-icon-btn" data-tt-a11y-toggle aria-label="Open accessibility settings">
+      <span class="material-symbols-outlined" aria-hidden="true">accessibility</span>
+    </button>
+    <button class="tt-icon-btn" type="button" onclick="GM.openMiniCart()" data-i18n-attr="aria-label:nav.openCart">
+      <span class="material-symbols-outlined" aria-hidden="true">shopping_cart</span>
+      <span class="badge-pill" data-tt-cart-badge style="display:none">0</span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile offcanvas nav -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="tt-mobile-nav" aria-labelledby="tt-mobile-nav-title">
+  <div class="offcanvas-header">
+    <h2 class="offcanvas-title h6" id="tt-mobile-nav-title" data-i18n="header.allCategories">Browse</h2>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="d-flex flex-column gap-1">
+      <a class="cat-link" href="catalog.html"><span class="material-symbols-outlined">apps</span> <span data-i18n="header.allProducts">All products</span></a>
+      <a class="cat-link" href="catalog.html?cat=electronics"><span class="material-symbols-outlined">memory</span> Electronics</a>
+      <a class="cat-link" href="catalog.html?cat=robotics"><span class="material-symbols-outlined">smart_toy</span> Robotics</a>
+      <a class="cat-link" href="catalog.html?cat=tools"><span class="material-symbols-outlined">build</span> Tools</a>
+      <a class="cat-link" href="catalog.html?cat=components"><span class="material-symbols-outlined">settings_input_component</span> Components</a>
+      <a class="cat-link" href="catalog.html?cat=drones"><span class="material-symbols-outlined">flight</span> <span data-i18n="nav.drones">Drones</span></a>
+      <a class="cat-link" href="catalog.html?cat=vehicles"><span class="material-symbols-outlined">electric_scooter</span> <span data-i18n="nav.vehicles">Vehicles</span></a>
+    </div>
+  </div>
+</div>
+
+<main id="tt-main">
+
+  <!-- Hero -->
+  <section class="tt-hero d-flex align-items-center">
+    <div class="container position-relative text-center text-md-start py-5" style="z-index:2">
+      <div style="max-width:640px">
+        <span class="tt-hero-eyebrow" data-i18n="hero.eyebrow">Next-gen technology</span>
+        <h1 data-i18n="hero.title">Engineer Your Future</h1>
+        <p class="lead" data-i18n="hero.lead">Robotics, precision tools and advanced electronics - sourced for professionals and serious enthusiasts. Free shipping over ₱5,300.</p>
+        <div class="d-flex gap-2 flex-wrap justify-content-center justify-content-md-start mt-3">
+          <a href="catalog.html" class="btn btn-cta">
+            <span data-i18n="hero.cta">Explore catalog</span>
+            <span class="material-symbols-outlined align-middle ms-1" aria-hidden="true">arrow_forward</span>
+          </a>
+          <a href="catalog.html?cat=drones" class="btn-cta-outline" data-i18n="hero.cta2">View new drones</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container-fluid" style="max-width:1440px">
+    <div class="row g-0">
+      <aside class="col-lg-3 d-none d-lg-block tt-sidebar" style="min-height:60vh" aria-label="Categories">
+        <h2 data-i18n="sidebar.title">Technical Catalog</h2>
+        <div class="muted" data-i18n="sidebar.subtitle">Expert sourcing</div>
+        <nav class="d-flex flex-column gap-1" aria-label="Category navigation">
+          <a class="cat-link is-active" href="catalog.html"><span class="material-symbols-outlined" aria-hidden="true">apps</span> <span data-i18n="header.allProducts">All Products</span></a>
+          <a class="cat-link" href="catalog.html?cat=electronics"><span class="material-symbols-outlined" aria-hidden="true">memory</span> Electronics</a>
+          <a class="cat-link" href="catalog.html?cat=robotics"><span class="material-symbols-outlined" aria-hidden="true">smart_toy</span> Robotics</a>
+          <a class="cat-link" href="catalog.html?cat=tools"><span class="material-symbols-outlined" aria-hidden="true">build</span> Tools</a>
+          <a class="cat-link" href="catalog.html?cat=components"><span class="material-symbols-outlined" aria-hidden="true">settings_input_component</span> Components</a>
+          <a class="cat-link" href="catalog.html?cat=drones"><span class="material-symbols-outlined" aria-hidden="true">flight</span> <span data-i18n="nav.drones">Drones</span></a>
+          <a class="cat-link" href="catalog.html?cat=vehicles"><span class="material-symbols-outlined" aria-hidden="true">electric_scooter</span> <span data-i18n="nav.vehicles">Vehicles</span></a>
+        </nav>
+        <hr>
+        <button class="cat-link w-100 text-start" data-tt-retro-toggle aria-pressed="false">
+          <span class="material-symbols-outlined" aria-hidden="true">history</span>
+          <span class="retro-label">Retro Mode</span>
+        </button>
+      </aside>
+
+      <div class="col-lg-9 px-3 px-md-4 py-4">
+
+        <section class="mb-5" aria-labelledby="tt-h-cat">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 id="tt-h-cat" class="tt-section-heading mb-0" data-i18n="home.featuredCats">Featured Categories</h2>
+            <a href="catalog.html" class="text-decoration-none small fw-semibold" data-i18n="home.viewCatalog">View catalog →</a>
+          </div>
+          <div class="tt-bento">
+            <a class="bento-card bento-lg" href="catalog.html?cat=electronics">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600&h=900&fit=crop" alt="A close-up of a modern PCB.">
+              <div class="scrim"></div>
+              <div class="body">
+                <h3 class="h4" data-i18n="home.bento.electronics.title">Advanced Electronics</h3>
+                <p data-i18n="home.bento.electronics.body">Microcontrollers, dev boards, sensors and IoT hubs.</p>
+              </div>
+            </a>
+            <a class="bento-card" href="catalog.html?cat=robotics">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1535378620166-273708d44e4c?w=1200&h=900&fit=crop" alt="A robotic arm in a lab.">
+              <div class="scrim"></div>
+              <div class="body"><h3 class="h5" data-i18n="home.bento.robotics">Robotics</h3></div>
+            </a>
+            <a class="bento-card" href="catalog.html?cat=tools">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?w=1200&h=900&fit=crop" alt="Precision tools on a workbench.">
+              <div class="scrim"></div>
+              <div class="body"><h3 class="h5" data-i18n="home.bento.tools">Precision Tools</h3></div>
+            </a>
+          </div>
+        </section>
+
+        <section aria-labelledby="tt-h-feat">
+          <div class="d-flex justify-content-between align-items-center mb-3 pb-3 border-bottom">
+            <h2 id="tt-h-feat" class="tt-section-heading mb-0" data-i18n="home.featuredProducts">Featured Products</h2>
+            <div class="d-none d-md-flex gap-2" role="group" aria-label="Featured filters">
+              <button class="tt-pill is-active" type="button" data-pill="all"      data-i18n="pill.all">All</button>
+              <button class="tt-pill"           type="button" data-pill="drones"   data-i18n="pill.drones">Drones</button>
+              <button class="tt-pill"           type="button" data-pill="vehicles" data-i18n="pill.vehicles">Vehicles</button>
+              <button class="tt-pill"           type="button" data-pill="sale"     data-i18n="pill.sale">On Sale</button>
+            </div>
+          </div>
+          <div id="tt-featured" class="tt-grid-products"></div>
+        </section>
+
+        <section class="mt-5">
+          <div class="row text-center g-3">
+            <div class="col-6 col-md-3">
+              <div class="p-3 rounded border" style="background:var(--tt-surface-card);border-color:var(--tt-border-subtle) !important">
+                <span class="material-symbols-outlined text-primary" aria-hidden="true" style="font-size:2rem">local_shipping</span>
+                <div class="fw-semibold mt-2" data-i18n="trust.shipping.title">Free shipping</div>
+                <small class="text-muted" data-i18n="trust.shipping.body">Over ₱5,300</small>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="p-3 rounded border" style="background:var(--tt-surface-card);border-color:var(--tt-border-subtle) !important">
+                <span class="material-symbols-outlined text-success" aria-hidden="true" style="font-size:2rem">verified_user</span>
+                <div class="fw-semibold mt-2" data-i18n="trust.secure.title">Secure payment</div>
+                <small class="text-muted" data-i18n="trust.secure.body">256-bit SSL</small>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="p-3 rounded border" style="background:var(--tt-surface-card);border-color:var(--tt-border-subtle) !important">
+                <span class="material-symbols-outlined" aria-hidden="true" style="font-size:2rem;color:var(--tt-tertiary)">refresh</span>
+                <div class="fw-semibold mt-2" data-i18n="trust.returns.title">30-day returns</div>
+                <small class="text-muted" data-i18n="trust.returns.body">Money-back guarantee</small>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="p-3 rounded border" style="background:var(--tt-surface-card);border-color:var(--tt-border-subtle) !important">
+                <span class="material-symbols-outlined" aria-hidden="true" style="font-size:2rem;color:var(--tt-secondary)">support_agent</span>
+                <div class="fw-semibold mt-2" data-i18n="trust.support.title">Expert support</div>
+                <small class="text-muted" data-i18n="trust.support.body">9–18 weekdays</small>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="tt-footer">
+  <div class="container-fluid" style="max-width:1440px">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="tt-brand">GenericMart</div>
+        <p class="text-muted small mt-2" data-i18n="footer.tagline">Expert sourcing for robotics, tools and electronics. Engineered for the demanding enthusiast.</p>
+        <div class="pay-icons mt-2" aria-label="Accepted payment methods">
+          <span class="material-symbols-outlined" aria-hidden="true" title="Visa">credit_card</span>
+          <span class="material-symbols-outlined" aria-hidden="true" title="Apple Pay">contactless</span>
+          <span class="material-symbols-outlined" aria-hidden="true" title="Bank">account_balance</span>
+          <span class="material-symbols-outlined" aria-hidden="true" title="PayPal">paypal</span>
+        </div>
+      </div>
+      <div class="col-6 col-md-2">
+        <h4 data-i18n="footer.shop">Shop</h4>
+        <ul>
+          <li><a href="catalog.html" data-i18n="nav.catalog">Catalog</a></li>
+          <li><a href="catalog.html?cat=drones" data-i18n="nav.drones">Drones</a></li>
+          <li><a href="catalog.html?cat=vehicles" data-i18n="nav.vehicles">Vehicles</a></li>
+          <li><a href="catalog.html?cat=robotics">Robotics</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md-2">
+        <h4 data-i18n="footer.support">Support</h4>
+        <ul>
+          <li><a href="#" data-i18n="footer.contact">Contact</a></li>
+          <li><a href="#" data-i18n="footer.faq">FAQ</a></li>
+          <li><a href="#" data-i18n="footer.shipping">Shipping</a></li>
+          <li><a href="#" data-i18n="footer.returns">Returns</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h4 data-i18n="footer.legal">Legal</h4>
+        <ul>
+          <li><a href="#" data-i18n="footer.privacy">Privacy</a></li>
+          <li><a href="#" data-i18n="footer.terms">Terms</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h4 data-i18n="footer.access">Accessibility</h4>
+        <button class="btn btn-sm btn-outline-secondary w-100 mb-2" data-tt-a11y-toggle>
+          <span class="material-symbols-outlined align-middle me-1" aria-hidden="true">accessibility</span>
+          <span data-i18n="footer.access.settings">Settings</span>
+        </button>
+        <button class="btn btn-sm btn-outline-secondary w-100" data-tt-retro-toggle aria-pressed="false">
+          <span class="material-symbols-outlined align-middle me-1" aria-hidden="true">history</span>
+          <span class="retro-label">Retro Mode</span>
+        </button>
+      </div>
+    </div>
+    <div class="copyright" data-i18n="footer.copy">
+      © 2026 GenericMart · All rights reserved
+    </div>
+  </div>
+</footer>
+
+<button type="button" class="tt-help-fab" data-bs-toggle="modal" data-bs-target="#tt-help-modal" data-i18n-attr="aria-label:nav.openHelp">
+  <span class="material-symbols-outlined" aria-hidden="true">help</span>
+</button>
+
+<div class="modal fade" id="tt-help-modal" tabindex="-1" aria-labelledby="tt-help-title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title h5" id="tt-help-title" data-i18n="help.title">Need help?</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <ul class="list-unstyled m-0">
+          <li class="mb-2"><a href="#"><span class="material-symbols-outlined align-middle me-2" aria-hidden="true">live_help</span><span data-i18n="help.faq">FAQ</span></a></li>
+          <li class="mb-2"><a href="#"><span class="material-symbols-outlined align-middle me-2" aria-hidden="true">mail</span><span data-i18n="help.contact">Contact form</span></a></li>
+          <li class="mb-2"><a href="#"><span class="material-symbols-outlined align-middle me-2" aria-hidden="true">chat</span><span data-i18n="help.chat">Live chat (Mon–Fri 9–18)</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="tt-welcome-backdrop" id="tt-welcome">
+  <div class="tt-welcome"></div>
+</div>
+
+<div class="tt-minicart-backdrop" onclick="GM.closeMiniCart()"></div>
+<aside class="tt-minicart" aria-label="Mini cart">
+  <div class="head">
+    <h2 data-i18n="minicart.title">Cart</h2>
+    <span id="tt-minicart-count" class="text-muted small fw-normal ms-2">(0)</span>
+    <button type="button" class="btn-close ms-auto" onclick="GM.closeMiniCart()" aria-label="Close"></button>
+  </div>
+  <div id="tt-minicart-body" class="body"></div>
+  <div class="foot">
+    <div class="d-flex justify-content-between mb-2"><span data-i18n="cart.summary.subtotal">Subtotal</span><strong id="tt-minicart-subtotal">₱0</strong></div>
+    <small class="text-muted d-block mb-3" data-i18n="minicart.shipTax">Shipping & tax calculated at checkout</small>
+    <a href="cart.html" class="btn btn-primary w-100 mb-2" data-i18n="minicart.viewCart">View cart &amp; checkout</a>
+    <button type="button" class="btn btn-link w-100" onclick="GM.closeMiniCart()" data-i18n="minicart.continue">Continue shopping</button>
+  </div>
+</aside>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+<script src="data/products.js" defer></script>
+<script src="js/i18n.js" defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/ui-components.js" defer></script>
+<script src="js/a11y.js" defer></script>
+<script src="js/retro.js" defer></script>
+<script src="js/home.js" defer></script>
+</body>
+</html>
