@@ -67,7 +67,7 @@ Effect: deployments are reproducible, traceable to a commit SHA, and require zer
 
 | Surface | Access |
 |---|---|
-| App Service public hostname (`<webapp>.azurewebsites.net`) | Public over HTTPS |
+| App Service public hostname (`app-genericmart-1327081543903332108.azurewebsites.net`) | Public over HTTPS |
 | Blob container `products` | Public read on individual blobs (intended for static images) |
 | Azure SQL Server | Only Azure-internal traffic (`AllowAzureServices` firewall rule). No public client IP allowed by default. Add a temporary IP rule for local development if needed. |
 | Web App -> SQL credentials | Stored as App Service appsettings, never committed to the repo. SQL admin password supplied via environment variable at deploy time only. |
@@ -75,17 +75,15 @@ Effect: deployments are reproducible, traceable to a commit SHA, and require zer
 
 ## 6. Deployment method
 
-Method A (Code) via Azure CLI. The script `deployment/deploy.azcli` (and PowerShell mirror `deploy.ps1`) idempotently creates the resource group and all baseline resources, applies the autoscale profile, assigns the managed identity, and prints the deployed web app URL. Detailed instructions live in `deployment/README.md`.
+Method A (Code) via Azure CLI. The script `deployment/deploy.azcli` (and PowerShell mirror `deploy.ps1`) idempotently creates the resource group and all baseline resources, scales the App Service Plan to 2 worker instances, assigns the system-assigned Managed Identity, and prints the deployed web app URL. Detailed instructions live in `deployment/README.md`.
 
 ## 7. Trade-offs and what we did not do
 
 - Did not implement Azure Cache for Redis (Scenario B optional). The product catalog is small enough that SQL read times are negligible. A real production storefront would benefit.
 - Did not implement Azure Front Door / CDN. Same reason: small static asset set.
-- Did not deploy across multiple Azure regions. Single-region Southeast Asia keeps cost within Azure for Students credit.
+- Did not deploy across multiple Azure regions. Single-region Japan East keeps cost within Azure for Students credit.
 - Did not implement WAF. Application Gateway with WAF would add a meaningful security boundary in production but is overkill for a demo and not free-tier eligible.
 
 ## 8. Live demo URL
 
-> Fill in after deployment.
-
-`https://<webapp>.azurewebsites.net`
+<https://app-genericmart-1327081543903332108.azurewebsites.net>

@@ -7,7 +7,7 @@ $ErrorActionPreference = "Stop"
 # =========================
 # Project variables (EDIT)
 # =========================
-$LOCATION = "southeastasia"
+$LOCATION = "japaneast"
 $RG       = "rg-genericmart-cloud"
 
 $APP_PLAN = "asp-genericmart"
